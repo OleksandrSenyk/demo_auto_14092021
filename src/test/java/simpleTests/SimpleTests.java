@@ -1,6 +1,7 @@
 package simpleTests;
 
 import net.bytebuddy.asm.Advice;
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,16 +20,21 @@ import java.util.concurrent.TimeUnit;
 public class SimpleTests {
 
     WebDriver webDriver;
+    Logger logger;
 
     @Before
     public void setUp(){
+        logger = Logger.getLogger(getClass());
         File fileChromeDriver = new File("./drivers/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver",fileChromeDriver.getAbsolutePath());
 
         webDriver = new ChromeDriver();
+        logger.info("Get chromeDriver");
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        logger.info("Wait seconds: 10");
         webDriver.get("https://football.ua");
+        logger.info("Browser was opened");
 
     }
 
