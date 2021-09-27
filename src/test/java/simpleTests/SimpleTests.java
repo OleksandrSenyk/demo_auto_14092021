@@ -33,7 +33,7 @@ public class SimpleTests {
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         logger.info("Wait seconds: 10");
-        webDriver.get("https://football.ua");
+        webDriver.get("https://finance.i.ua/converter/");
         logger.info("Browser was opened");
 
     }
@@ -48,30 +48,17 @@ public class SimpleTests {
 
         webDriver.getCurrentUrl();
         System.out.println(webDriver.getTitle());
-        String exTitle = webDriver.findElement(By.xpath("//*[@id='ctl00_columnTop']/div[2]/article/h3")).getText();
-        Assert.assertEquals("ГЛАВНОЕ ЗА СУТКИ", exTitle);
-        webDriver.findElement(By.xpath("//*[@id='ctl00_menu']/li[15]/a")).click();
-        String exTitle1 = webDriver.findElement(By.xpath("//*[@id='ctl00_columnLeft']/article[1]/h3")).getText();
-        Assert.assertEquals("ПОСЛЕДНИЕ МАТЧИ", exTitle1);
-        webDriver.findElement(By.xpath("//*[@id='aspnetForm']/footer/div/div/nav/div[2]/ul/li[2]/a")).click();
-        String exTitle2 = webDriver.findElement(By.xpath("//*[@id='ctl00_columnRight']/article/h1")).getText();
-        Assert.assertEquals("ФУТБОЛ В АНГЛИИ: НОВОСТИ",exTitle2);
-
+        String exTitle = webDriver.findElement(By.xpath("//*[@id='graph_type_selector']/li[2]/a")).getText();
+        Assert.assertEquals("Наличный рынок", exTitle);
+        String exTitle1 = webDriver.findElement(By.xpath("//*[@id='type_selector']/li[2]/a")).getText();
+        Assert.assertEquals("EUR", exTitle1);
+        String exTitle2 = webDriver.findElement(By.xpath("//div[@class='form_item']/ul/li[2]/a")).getText();
+        Assert.assertEquals("купить",exTitle2);
 
 
     }
 
-    @Test
-    public void siteTest2(){
-        webDriver.findElement(By.xpath("//*[@id='searchInput']")).sendKeys("Реал");
-        WebElement dynamicElem = (new WebDriverWait(webDriver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='searchInput']")));
-        System.out.println(dynamicElem.getTagName());
-        webDriver.findElement(By.xpath("//*[@id='searchInput']")).sendKeys(Keys.ENTER);
-        String exTitleSearch = webDriver.findElement(By.xpath("//*[@id='ctl00_columnTop']/article/div[5]/div[2]/div/h4/a")).getText();
-        Assert.assertEquals("Реал Мадрид",exTitleSearch);
 
-    }
 
 
 
