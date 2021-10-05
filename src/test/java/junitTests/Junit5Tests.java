@@ -1,18 +1,13 @@
 package junitTests;
 
-import org.apache.log4j.Logger;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import org.openqa.selenium.By;
 
-import org.openqa.selenium.chrome.ChromeDriver;
+import java.time.Duration;
 
-import java.io.File;
-import java.util.concurrent.TimeUnit;
 
-public class JunitTests {
+public class Junit5Tests {
 
 
     @RegisterExtension
@@ -43,6 +38,7 @@ public class JunitTests {
     @Test
     public void test() {
         System.out.println("test");
+        Assertions.assertTimeout(Duration.ofMillis(1), () ->Thread.sleep(10));
 
     }
 
