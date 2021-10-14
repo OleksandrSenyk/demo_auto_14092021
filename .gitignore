@@ -1,6 +1,3 @@
 .idea
-<<<<<<< HEAD
-.target/
-=======
-.idea/
->>>>>>> 1434033a22e90f192bbe441d9d5082ae5cc5afd7
+target
+

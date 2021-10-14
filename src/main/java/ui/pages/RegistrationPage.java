@@ -1,11 +1,9 @@
 package ui.pages;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
+import model.Account;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 public class RegistrationPage extends MainPage {
 
@@ -13,71 +11,64 @@ public class RegistrationPage extends MainPage {
         super(webDriver);
     }
 
-    @FindBy(xpath = "//a[@class='login']")
-    private WebElement signInLink;
+    @FindBy(xpath = "//div[@class='radio-inline'][1]")
+    public WebElement genderMr;
 
-    @FindBy(xpath = "//input[@id='email_create']")
-    private WebElement loginInput;
-
-    @FindBy(id="SubmitCreate")
-    private WebElement submitButtonCreate;
+    @FindBy(xpath = "//div[@class='radio-inline'][2]")
+    public WebElement genderMrs;
 
     @FindBy(id="customer_firstname")
-    private WebElement customerFirstName;
+    public WebElement customerFirstName;
 
     @FindBy(name="customer_lastname")
-    private WebElement customerLastName;
+    public WebElement customerLastName;
 
     @FindBy(xpath = "//input[@id='email']")
-    private WebElement emailInput;
+    public WebElement emailInput;
 
     @FindBy(name = "passwd")
-    private WebElement passwordInput;
+    public WebElement passwordInput;
+
+    @FindBy(id = "days")
+    public WebElement daysDropDown;
+
+    @FindBy(id = "months")
+    public WebElement monthsDropDown;
+
+    @FindBy(id = "years")
+    public WebElement yearsDropDown;
 
     @FindBy(xpath = "//input[@id='firstname']")
-    private WebElement firstNameInput;
+    public WebElement firstNameInput;
 
     @FindBy(xpath = "//input[@id='lastname']")
-    private WebElement lastNameInput;
+    public WebElement lastNameInput;
 
     @FindBy(xpath = "//div[@class='account_creation']//p[4]//input[@type='text']")
-    private WebElement streetInput;
+    public WebElement streetInput;
 
     @FindBy(xpath = "//input[@id='city']")
-    private WebElement cityInput;
+    public WebElement cityInput;
 
     @FindBy(xpath = "//select[@id='id_state']")
-    private By.ByXPath stateSelect;
+    public WebElement stateSelect;
 
     @FindBy(xpath = "//input[@id='postcode']")
-    private WebElement postcodeInput;
+    public WebElement postcodeInput;
 
     @FindBy(xpath = "//select[@id='id_country']")
-    private WebElement idCountry;
+    public WebElement idCountry;
 
     @FindBy(xpath = "//input[@id='phone_mobile']")
-    private WebElement phoneMobileInput;
+    public WebElement phoneMobileInput;
 
     @FindBy(xpath = "//input[@id='alias']")
-    private WebElement aliasInput;
+    public WebElement aliasInput;
 
     @FindBy(xpath = "//button[@id='submitAccount']")
-    private WebElement submitAccount;
-
-    @FindBy(xpath = "//*[@id='center_column']/div/p")
-    private WebElement error1;
-
-    @FindBy(xpath = "//*[@id='center_column']/div/ol/li")
-    private WebElement errorMessage;
+    public WebElement submitAccount;
 
 
-
-    /**
-     * Method open SignIn page
-     */
-    public void clickSignIn() {
-        signInLink.click();
-    }
 
     /**
      * Method click to SignIn page
@@ -86,12 +77,14 @@ public class RegistrationPage extends MainPage {
         openUrl("http://automationpractice.com/index.php?controller=my-account");
     }
 
-    public void inputEmailCreate(String email) {
-        webElements.inputText(loginInput, email);
-    }
 
-    public void submitButtonCreate() {
-        webElements.clickOnElement(submitButtonCreate);
+
+    public void selectGender(String gender) {
+        if (gender.equals("Mr.")) {
+            webElements.clickRadioButton(genderMr, gender);
+        } else {
+            webElements.clickRadioButton(genderMrs, gender);
+        }
     }
 
     public void inputCustomerFN(String firstName) {
@@ -110,6 +103,19 @@ public class RegistrationPage extends MainPage {
         webElements.inputText(passwordInput, password);
     }
 
+    public void selectBirthDay (String day){
+        webElements.selectValueInDropDown(daysDropDown, day);
+    }
+
+    public void selectBirthMonth (String month){
+        webElements.selectValueInDropDown(monthsDropDown, month);
+    }
+
+    public void selectBirthYear (String year){
+        webElements.selectValueInDropDown(yearsDropDown, year);
+
+    }
+
     public void inputFirstName(String firstName) {
         webElements.inputText(firstNameInput, firstName);
     }
@@ -126,9 +132,12 @@ public class RegistrationPage extends MainPage {
         webElements.inputText(cityInput, city);
     }
 
-    public void selectState(int index) {
-        Select select = new Select(webDriver.findElement(By.xpath("//select[@id='id_state']")));
-        select.selectByIndex(index);
+    public void selectState(String text) {
+      webElements.selectTextInDropDownByText(stateSelect, text);
+    }
+
+    public void selectCountry(String text) {
+        webElements.selectTextInDropDownByText(idCountry, text);
     }
 
     public void inputPostcode(String postCode) {
@@ -147,12 +156,26 @@ public class RegistrationPage extends MainPage {
         webElements.clickOnElement(submitAccount);
     }
 
-    public String checkError1() {
-        return error1.getText();
+    public void registrationNewUser(Account account) {
+        selectGender(account.getGender());
+        inputCustomerFN(account.getFirstCustomerName());
+        inputCustomerLN(account.getLastCustomerName());
+        inputEmail(account.getEmail());
+        inputPassword(account.getPassword());
+        selectBirthDay(account.getDay());
+        selectBirthMonth(account.getMonth());
+        selectBirthYear(account.getYear());
+        inputFirstName(account.getFirstName());
+        inputLastName(account.getLastName());
+        inputStreet(account.getAddress1());
+        inputCity(account.getCity());
+        selectState(account.getState());
+        inputPostcode(account.getPostCode());
+        selectCountry(account.getCountry());
+        inputMobilePhone(account.getPhoneMobile());
+        inputAlias(account.getAlias());
     }
 
-    public String checkErrorMessage() {
-        return errorMessage.getText();
-    }
+
 
 }

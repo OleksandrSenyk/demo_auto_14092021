@@ -1,5 +1,7 @@
 package ui.pages;
 
+import io.qameta.allure.Step;
+import model.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,163 +14,184 @@ public class Registration2Page extends MainPage {
         super(webDriver);
     }
 
-    @FindBy(xpath = "//a[@class='login']")
-    private WebElement signInLink;
+    @FindBy(xpath = "//div[@class='radio-inline'][1]")
+    public WebElement genderMr;
 
-    @FindBy(xpath = "//input[@id='email_create']")
-    private WebElement loginInput;
-
-    @FindBy(id="SubmitCreate")
-    private WebElement submitButtonCreate;
+    @FindBy(xpath = "//div[@class='radio-inline'][2]")
+    public WebElement genderMrs;
 
     @FindBy(id="customer_firstname")
-    private WebElement customerFirstName;
+    public WebElement customerFirstName;
 
     @FindBy(name="customer_lastname")
-    private WebElement customerLastName;
+    public WebElement customerLastName;
 
     @FindBy(xpath = "//input[@id='email']")
-    private WebElement emailInput;
+    public WebElement emailInput;
 
     @FindBy(name = "passwd")
-    private WebElement passwordInput;
+    public WebElement passwordInput;
+
+    @FindBy(id = "days")
+    public WebElement daysDropDown;
+
+    @FindBy(id = "months")
+    public WebElement monthsDropDown;
+
+    @FindBy(id = "years")
+    public WebElement yearsDropDown;
 
     @FindBy(xpath = "//input[@id='firstname']")
-    private WebElement firstNameInput;
+    public WebElement firstNameInput;
 
     @FindBy(xpath = "//input[@id='lastname']")
-    private WebElement lastNameInput;
+    public WebElement lastNameInput;
 
     @FindBy(xpath = "//div[@class='account_creation']//p[4]//input[@type='text']")
-    private WebElement streetInput;
+    public WebElement streetInput;
 
     @FindBy(xpath = "//input[@id='city']")
-    private WebElement cityInput;
+    public WebElement cityInput;
 
     @FindBy(xpath = "//select[@id='id_state']")
-    private By.ByXPath stateSelect;
+    public WebElement stateSelect;
 
     @FindBy(xpath = "//input[@id='postcode']")
-    private WebElement postcodeInput;
+    public WebElement postcodeInput;
 
     @FindBy(xpath = "//select[@id='id_country']")
-    private WebElement idCountry;
+    public WebElement idCountry;
 
     @FindBy(xpath = "//input[@id='phone_mobile']")
-    private WebElement phoneMobileInput;
+    public WebElement phoneMobileInput;
 
     @FindBy(xpath = "//input[@id='alias']")
-    private WebElement aliasInput;
+    public WebElement aliasInput;
 
     @FindBy(xpath = "//button[@id='submitAccount']")
-    private WebElement submitAccount;
+    public WebElement submitAccount;
 
     @FindBy(xpath = "//div[@id='center_column']/h1")
-    private WebElement titleRegisteredAccount;
+    public WebElement titleRegisteredAccount;
 
-
-
-
-
-
-    /**
-     * Method open SignIn page
-     */
-    public Registration2Page clickSignIn() {
-        signInLink.click();
+    @Step("Select gender {gender}")
+    public Registration2Page selectGender(String gender) {
+        if (gender.equals("Mr.")) {
+            webElements.clickRadioButton(genderMr, gender);
+        } else {
+            webElements.clickRadioButton(genderMrs, gender);
+        }
         return this;
     }
 
-    /**
-     * Method click to SignIn page
-     */
-    public Registration2Page openSignInPage() {
-        openUrl("http://automationpractice.com/index.php?controller=my-account");
-        return this;
-    }
-
-    public Registration2Page inputEmailCreate(String email) {
-        loginInput.clear();
-        loginInput.sendKeys(email);
-        return this;
-    }
-    public Registration2Page submitButtonCreate() {
-        submitButtonCreate.click();
-        return this;
-    }
-
+    @Step("Input customer first name {firstName}")
     public Registration2Page inputCustomerFN(String firstName) {
         customerFirstName.clear();
         customerFirstName.sendKeys(firstName);
         return this;
     }
 
+    @Step("Input customer last name {lastName}")
     public Registration2Page inputCustomerLN(String lastName) {
         customerLastName.clear();
         customerLastName.sendKeys(lastName);
         return this;
     }
 
+    @Step("Input email {email}")
     public Registration2Page inputEmail(String email) {
         emailInput.clear();
         emailInput.sendKeys(email);
         return this;
     }
 
+    @Step("Input password {password}")
     public Registration2Page inputPassword(String password) {
         passwordInput.clear();
         passwordInput.sendKeys(password);
         return this;
     }
 
+    @Step("Select birthday {day}")
+    public Registration2Page selectBirthDay(String day){
+        webElements.selectValueInDropDown(daysDropDown, day);
+        return this;
+    }
+
+    @Step("Select birthday month {month}")
+    public Registration2Page selectBirthMonth(String month){
+        webElements.selectValueInDropDown(monthsDropDown, month);
+        return this;
+     }
+
+    @Step("Select birthday year {year}")
+    public Registration2Page selectBirthYear(String year){
+        webElements.selectValueInDropDown(yearsDropDown, year);
+        return this;
+    }
+
+    @Step("Input first name {firstName}")
     public Registration2Page inputFirstName(String firstName) {
         firstNameInput.clear();
         firstNameInput.sendKeys(firstName);
         return this;
     }
 
+    @Step("Input last name {lastName}")
     public Registration2Page inputLastName(String lastName) {
         lastNameInput.clear();
         lastNameInput.sendKeys(lastName);
         return this;
     }
 
+    @Step("Input street {street}")
     public Registration2Page inputStreet(String street) {
         streetInput.clear();
         streetInput.sendKeys(street);
         return this;
     }
 
+    @Step("Input city {city}")
     public Registration2Page inputCity(String city) {
         cityInput.clear();
         cityInput.sendKeys(city);
         return this;
     }
 
-    public Registration2Page selectState(int index) {
-        Select select = new Select(webDriver.findElement(By.xpath("//select[@id='id_state']")));
-        select.selectByIndex(index);
+    @Step("Select state {text}")
+    public Registration2Page selectState(String text) {
+    webElements.selectTextInDropDownByText(stateSelect, text);
         return this;
     }
 
+    @Step("Select country {text}")
+    public Registration2Page selectCountry(String text) {
+        webElements.selectTextInDropDownByText(idCountry, text);
+        return this;
+    }
+
+    @Step("Input post code {postCode}")
     public Registration2Page inputPostcode(String postCode) {
         postcodeInput.clear();
         postcodeInput.sendKeys(postCode);
         return this;
     }
 
+    @Step("Input mobile {phone}")
     public Registration2Page inputMobilePhone(String phone) {
         phoneMobileInput.clear();
         phoneMobileInput.sendKeys(phone);
         return this;
     }
 
+    @Step("Input alias {alias}")
     public Registration2Page inputAlias(String alias) {
         aliasInput.clear();
         aliasInput.sendKeys(alias);
         return this;
     }
 
+    @Step("Submit account")
     public Registration2Page clickSubmitAccount() {
         submitAccount.click();
         return this;
@@ -176,6 +199,27 @@ public class Registration2Page extends MainPage {
 
     public String checkTitle() {
         return titleRegisteredAccount.getText();
+    }
+
+    public Registration2Page registrationNewUser(Account account) {
+        selectGender(account.getGender());
+        inputCustomerFN(account.getFirstCustomerName());
+        inputCustomerLN(account.getLastCustomerName());
+        inputEmail(account.getEmail());
+        inputPassword(account.getPassword());
+        selectBirthDay(account.getDay());
+        selectBirthMonth(account.getMonth());
+        selectBirthYear(account.getYear());
+        inputFirstName(account.getFirstName());
+        inputLastName(account.getLastName());
+        inputStreet(account.getAddress1());
+        inputCity(account.getCity());
+        selectState(account.getState());
+        inputPostcode(account.getPostCode());
+        selectCountry(account.getCountry());
+        inputMobilePhone(account.getPhoneMobile());
+        inputAlias(account.getAlias());
+        return this;
     }
 
 
