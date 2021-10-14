@@ -27,7 +27,6 @@ public class SimpleTests {
         logger = Logger.getLogger(getClass());
         File fileChromeDriver = new File("./drivers/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver",fileChromeDriver.getAbsolutePath());
-
         webDriver = new ChromeDriver();
         logger.info("Get chromeDriver");
         webDriver.manage().window().maximize();

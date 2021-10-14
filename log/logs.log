@@ -16,3 +16,30 @@
 2021-27-09 22:42:44  INFO [SimpleTests:32  ] : Get chromeDriver
 2021-27-09 22:42:44  INFO [SimpleTests:35  ] : Wait seconds: 10
 2021-27-09 22:43:15  INFO [SimpleTests:37  ] : Browser was opened
+2021-28-09 08:12:08  INFO [SimpleTests:31  ] : Get chromeDriver
+2021-28-09 08:12:08  INFO [SimpleTests:34  ] : Wait seconds: 10
+2021-28-09 08:12:13  INFO [SimpleTests:36  ] : Browser was opened
+2021-28-09 09:53:00  INFO [RegistrationTests:26  ] : Get chromeDriver
+2021-28-09 09:53:00  INFO [RegistrationTests:29  ] : Browser was opened
+2021-28-09 09:53:24  INFO [  MainPage:27  ] : Page was opened https://finance.i.ua/converter/
+2021-28-09 10:03:57  INFO [RegistrationTests:28  ] : Get chromeDriver
+2021-28-09 10:03:57  INFO [RegistrationTests:31  ] : Browser was opened
+2021-28-09 10:04:02  INFO [  MainPage:27  ] : Page was opened https://finance.i.ua/converter/
+2021-28-09 10:13:18  INFO [RegistrationTests:28  ] : Get chromeDriver
+2021-28-09 10:13:18  INFO [RegistrationTests:31  ] : Browser was opened
+2021-28-09 10:13:23  INFO [  MainPage:27  ] : Page was opened https://finance.i.ua/converter/
+2021-28-09 10:24:05  INFO [RegistrationTests:28  ] : Get chromeDriver
+2021-28-09 10:24:05  INFO [RegistrationTests:31  ] : Browser was opened
+2021-28-09 10:24:17 ERROR [  MainPage:30  ] : Page can't opened https://financei.ua/converter/
+2021-28-09 10:56:13  INFO [RegistrationTests:28  ] : Get chromeDriver
+2021-28-09 10:56:14  INFO [RegistrationTests:31  ] : Browser was opened
+2021-28-09 10:56:21  INFO [  MainPage:28  ] : Page was opened https://finance.i.ua/converter/
+2021-28-09 21:58:39  INFO [RegistrationTests:28  ] : Get chromeDriver
+2021-28-09 21:58:39  INFO [RegistrationTests:31  ] : Browser was opened
+2021-28-09 21:58:44  INFO [  MainPage:28  ] : Page was opened https://finance.i.ua/converter/
+2021-28-09 22:41:06  INFO [RegistrationTests:29  ] : Get chromeDriver
+2021-28-09 22:41:06  INFO [RegistrationTests:32  ] : Browser was opened
+2021-28-09 22:41:11  INFO [  MainPage:28  ] : Page was opened https://finance.i.ua/converter/
+2021-28-09 22:42:16  INFO [RegistrationTests:29  ] : Get chromeDriver
+2021-28-09 22:42:16  INFO [RegistrationTests:32  ] : Browser was opened
+2021-28-09 22:42:39  INFO [  MainPage:28  ] : Page was opened https://finance.i.ua/converter/
