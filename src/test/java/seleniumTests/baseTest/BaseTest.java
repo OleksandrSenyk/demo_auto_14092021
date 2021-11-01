@@ -1,4 +1,4 @@
-package baseTest;
+package seleniumTests.baseTest;
 
 import com.github.javafaker.Faker;
 import io.qameta.allure.Attachment;
@@ -14,10 +14,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import ui.pages.*;
+import pagesSelenium.*;
 
 import java.io.File;
-import java.security.PublicKey;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {

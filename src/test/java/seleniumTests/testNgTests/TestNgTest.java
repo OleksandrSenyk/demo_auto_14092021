@@ -1,4 +1,4 @@
-package testNgTests;
+package seleniumTests.testNgTests;
 
 import org.testng.Assert;
 import org.testng.annotations.*;
