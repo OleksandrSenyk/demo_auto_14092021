@@ -41,7 +41,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test
-    public void testFindProduct() {
+    public void testFindProduct1() {
         Selenide.open(Configuration.baseUrl);
         mainPage.getProduct("Blouse").clickToProduct("Blouse");
     }
@@ -50,7 +50,7 @@ public class RegistrationTest extends BaseTest {
 
     //negative
     @Test
-    public void testFindProduct() {
+    public void testFindProduct2() {
         Selenide.open(Configuration.baseUrl);
         mainPage.getProduct("Shirt").clickToProduct("Shirt");
     }
