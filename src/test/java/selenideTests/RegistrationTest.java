@@ -41,17 +41,12 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test
-    public void testFindProduct1() {
+    public void testFindProduct() {
         Selenide.open(Configuration.baseUrl);
         mainPage.getProduct("Blouse").clickToProduct("Blouse");
     }
 
 
 
-    //negative
-    @Test
-    public void testFindProduct2() {
-        Selenide.open(Configuration.baseUrl);
-        mainPage.getProduct("Shirt").clickToProduct("Shirt");
-    }
+
 }
