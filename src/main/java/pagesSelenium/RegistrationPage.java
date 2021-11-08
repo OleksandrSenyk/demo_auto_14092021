@@ -1,4 +1,4 @@
-package ui.pages;
+package pagesSelenium;
 
 import model.Account;
 import org.openqa.selenium.WebDriver;

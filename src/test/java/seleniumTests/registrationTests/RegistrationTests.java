@@ -1,6 +1,6 @@
-package ui.registrationTests;
+package seleniumTests.registrationTests;
 
-import baseTest.BaseTest;
+import seleniumTests.baseTest.BaseTest;
 import dataProviders.RegistrationPageDataProvider;
 import io.qameta.allure.*;
 import model.Account;
@@ -17,7 +17,7 @@ public class RegistrationTests extends BaseTest {
     private final String DAY = "1";
     private final String MONTH = "12";
     private final String YEAR = "1980";
-    private final String STREET = "streen Boston, 14";
+    private final String STREET = "street Boston, 14";
     private final String CITY = "Boston";
     private final String STATE = "New York";
     private final String COUNTRY = "USA";
