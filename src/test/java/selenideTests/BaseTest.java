@@ -50,7 +50,7 @@ public class BaseTest {
 
     @BeforeClass
     public void setUp() {
-        final String RUN_TYPE = "remote";
+        final String RUN_TYPE = "local";
         switch (RUN_TYPE) {
             case ("local"):
                 WebDriverManager.chromedriver().browserVersion("95").setup();
